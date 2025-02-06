@@ -23,3 +23,83 @@ PDF.ai is an advanced **Retrieval-Augmented Generation (RAG)** chatbot that allo
 ```sh
 git clone https://github.com/your-username/PDF.ai.git
 cd PDF.ai
+```
+
+### 2️⃣ Install Dependencies  
+#### Backend  
+```sh
+cd backend
+pip install -r requirements.txt
+```
+
+#### Frontend  
+```sh
+cd frontend
+npm install
+```
+
+### 3️⃣ Set Up Environment Variables  
+Create a `.env` file in both `backend/` and `frontend/` directories and configure the following:
+
+#### Backend `.env`
+```
+MONGO_URI=<your-mongodb-uri>
+PINECONE_API_KEY=<your-pinecone-api-key>
+PINECONE_ENV=<your-pinecone-environment>
+VERTEX_AI_PROJECT_ID=<your-gcp-project-id>
+VERTEX_AI_MODEL=<your-gemini-model>
+SECRET_KEY=<your-secret-key>
+```
+
+#### Frontend `.env`
+```
+REACT_APP_BACKEND_URL=http://localhost:5000
+```
+
+### 4️⃣ Run the Application  
+#### Start Backend  
+```sh
+cd backend
+python app.py
+```
+
+#### Start Frontend  
+```sh
+cd frontend
+npm start
+```
+
+## 📌 API Endpoints  
+
+### Upload PDF  
+```http
+POST /upload
+```
+Uploads a PDF file for processing.
+
+### Chat with Document  
+```http
+POST /chat
+```
+Sends a query related to an uploaded document and receives AI-generated responses.
+
+### Fetch Chat History  
+```http
+GET /history
+```
+Retrieves past chat history related to a specific document.
+
+## 📜 License  
+This project is licensed under the **MIT License**.
+
+## 🤝 Contributing  
+We welcome contributions! Please follow these steps:
+1. Fork the repository.
+2. Create a new branch (`git checkout -b feature-branch`).
+3. Commit your changes (`git commit -m "Add new feature"`).
+4. Push to your branch (`git push origin feature-branch`).
+5. Open a pull request.
+
+## 📧 Contact  
+For inquiries, reach out via email at `your-email@example.com` or open an issue on GitHub.
+
