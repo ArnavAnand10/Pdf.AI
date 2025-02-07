@@ -1,17 +1,13 @@
 from langchain_google_vertexai import ChatVertexAI, VertexAIEmbeddings
-from langchain.chains import RetrievalQA
-from langchain_community.document_loaders import TextLoader, PyPDFLoader
-from langchain_core.messages import HumanMessage
+
+from langchain_community.document_loaders import  PyPDFLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_core.documents import Document
 from langchain import hub
 from langgraph.graph import START, StateGraph
-from pydantic import BaseModel, Field
 from pinecone.grpc import PineconeGRPC as Pinecone
-from pinecone import ServerlessSpec
 from typing_extensions import List, TypedDict
 import os
-import pandas as pd
 from Database.connection import connectDB
 from langchain_core.prompts import PromptTemplate
 import os

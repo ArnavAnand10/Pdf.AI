@@ -5,7 +5,6 @@ from langServices import handle_uploaded_pdf, answerQuery, namespace_exists
 from flask_cors import CORS, cross_origin
 from Database.connection import connectDB
 from datetime import datetime
-import json
 app = Flask(__name__)
 CORS(app)  # Enable CORS globally
 
