@@ -10,7 +10,6 @@ from pydantic import BaseModel, Field
 from pinecone.grpc import PineconeGRPC as Pinecone
 from pinecone import ServerlessSpec
 from typing_extensions import List, TypedDict
-from IPython.display import Image, display
 import os
 import pandas as pd
 from Database.connection import connectDB

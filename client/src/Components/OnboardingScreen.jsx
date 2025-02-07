@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import url from "../utils/url";
 
 function OnboardingScreen() {
   let data = JSON.parse(localStorage.getItem("data"));
