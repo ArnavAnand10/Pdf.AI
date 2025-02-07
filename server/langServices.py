@@ -24,7 +24,7 @@ load_dotenv()
 
 
 
-pc = Pinecone(api_key=os.getenv("PINECONE_KEY"))
+pc = Pinecone(api_key=os.getenv("PINE"))
 index_name = "multi-tenant-agent"
 index = pc.Index(index_name)
 llm = ChatVertexAI(model="gemini-1.5-flash")
