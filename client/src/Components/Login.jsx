@@ -33,7 +33,7 @@ function Login() {
       localStorage.setItem("data", JSON.stringify(response.data.result));
       navigate("/onBoard");
     } catch (error) {
-      const errorMsg = error.response?.data?.error ;
+      const errorMsg = error.response?.data?.error || error ;
       console.log(errorMsg);
       setToastMessage(errorMsg);
       setTimeout(() => setToastMessage(""), 2000); // Hide toast after 2 seconds
