@@ -13,6 +13,8 @@ function App() {
   return (
    
     <Routes>
+      <Route path='/' element={<SignUP/>}/>
+
       <Route path='/signin' element={<SignUP/>}/>
       <Route path='/onBoard' element={<OnboardingScreen/>}/>
       <Route path = '/login' element={<Login/>} />

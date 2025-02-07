@@ -3,7 +3,6 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "../context/AuthContext";
 import axios from "axios";
 
 // Define validation schema
@@ -15,7 +14,6 @@ const schema = yup.object().shape({
 });
 
 function SignUP() {
-  const { setSignupData } = useAuth();
   const navigate = useNavigate();
   const [toastMessage, setToastMessage] = useState(""); // Stores error message
 
@@ -29,10 +27,9 @@ function SignUP() {
 
   const onSubmit = async (data) => {
     console.log("Sign Up Data:", data);
-    setSignupData(data);
 
     try {
-      await axios.post("http://localhost:5000/register", data);
+      await axios.post(`${url}register`, data);
       navigate("/login");
     } catch (error) {
       console.log(error.response.data.error);

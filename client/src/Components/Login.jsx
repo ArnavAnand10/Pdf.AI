@@ -28,7 +28,7 @@ function Login() {
   const onSubmit = async (data) => {
     setLoading(true);
     try {
-      const response = await axios.post("http://localhost:5000/login", data);
+      const response = await axios.post(`${url}login`, data);
       console.log(response.data.message);
       localStorage.setItem("data", JSON.stringify(response.data.result));
       navigate("/onBoard");

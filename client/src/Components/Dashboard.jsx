@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import url from "../utils/url";
 
 function Dashboard() {
   const [mainLoader, setMainLoader] = useState(false);
@@ -27,7 +28,7 @@ function Dashboard() {
           console.log(email, role);
 
           const response = await axios.get(
-            `http://localhost:5000/check-namespace?email=${email}&role=${role}`
+            `${url}check-namespace?email=${email}&role=${role}`
           );
           if (response.data.result === 0) {
             navigate("/onboard");
@@ -48,7 +49,7 @@ function Dashboard() {
           const user_type = data.role;
   
           const response = await axios.get(
-            `http://localhost:5000/getHistory?user_id=${user_id}&user_type=${user_type}`
+            `${url}getHistory?user_id=${user_id}&user_type=${user_type}`
           );
   
           const history = response.data.history || [];
@@ -99,7 +100,7 @@ function Dashboard() {
       setMessages((prev) => [...prev, { text: "loading", sender: "bot", isLoading: true }]);
 
       const response = await axios.get(
-        `http://localhost:5000/getresponse?user_question=${input}&user_id=${user_id}&user_type=${user_type}`
+        `${url}getresponse?user_question=${input}&user_id=${user_id}&user_type=${user_type}`
       );
 
       // Replace loading message with actual bot response

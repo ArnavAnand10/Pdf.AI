@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { useAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
@@ -21,7 +20,7 @@ function OnboardingScreen() {
 
     const checkNS = async ()=>{
       try{
-        const response = await axios.get(`http://localhost:5000/check-namespace?email=${data.email}&role=${data.role}`)
+        const response = await axios.get(`${url}check-namespace?email=${data.email}&role=${data.role}`)
         if(response.data.result==1){
           navigate('/dashboard')
         }
@@ -88,7 +87,7 @@ function OnboardingScreen() {
     formData.append("user_type", data.role);
 
     try {
-      const response = await axios.post("http://127.0.0.1:5000/upload", formData, {
+      const response = await axios.post(`${url}upload`, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
