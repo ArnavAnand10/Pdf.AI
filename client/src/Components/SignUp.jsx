@@ -16,7 +16,8 @@ const schema = yup.object().shape({
 
 function SignUP() {
   const navigate = useNavigate();
-  const [toastMessage, setToastMessage] = useState(""); // Stores error message
+  const [toastMessage, setToastMessage] = useState("");
+  const [loader, setLoader] = useState(false); // Stores error message
 
   const {
     register,
@@ -28,17 +29,22 @@ function SignUP() {
 
   const onSubmit = async (data) => {
     console.log("Sign Up Data:", data);
-
+    setLoader(true);
     try {
-      await axios.post(`${url}register`, data);
-      navigate("/login");
+     const response = await axios.post(`${url}register`, data);
+     console.log(response.data.message);
+     
+     navigate("/login");
+
     } catch (error) {
-      console.log(error.response.data.error);
+      console.log(error.response.data.error || error);
       
       const errorMsg = error.response?.data?.error || "Something went wrong!";
       console.log(errorMsg);
       setToastMessage(errorMsg);
       setTimeout(() => setToastMessage(""), 2000); // Hide toast after 2 seconds
+    }finally{
+      setLoader(false);
     }
   };
 
@@ -67,7 +73,9 @@ function SignUP() {
           </select>
           <p className="text-red-500 text-left">{errors.role?.message}</p>
 
-          <button type="submit" className="btn btn-primary">Get Started</button>
+          <button  type="submit" className="btn btn-primary">{loader ? <span className="flex items-center gap-3">
+            <span className="loading loading-spinner loading-md"></span>
+            </span> : "Get Started" }</button>
           {toastMessage && (
         <div className=" alert alert-error  shadow-lg text-center flex items-center justify-center">
           <p className="font-medium">{toastMessage}</p>

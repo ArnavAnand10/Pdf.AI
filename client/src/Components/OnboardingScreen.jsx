@@ -95,7 +95,7 @@ function OnboardingScreen() {
       });
 
       console.log("Upload Successful:", response.data);
-      alert("File uploaded successfully!");
+      navigate("/dashboard")
     } catch (error) {
       console.error("Upload Error:", error);
       setError("File upload failed. Please try again.");
